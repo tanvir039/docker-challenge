@@ -1,4 +1,4 @@
-version: '3'
+version: '3.8'
 
 services:
   web:
@@ -9,6 +9,10 @@ services:
       - ./app:/app
     environment:
       - FLASK_ENV=development
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    deploy:
+      replicas: 3
   redis:
     image: "redis:alpine"
     volumes:
